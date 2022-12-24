@@ -9,5 +9,6 @@ MY_SECRET="" # random and strong string or base64... idk
 
 ## Run the project
 ```bash
+npm install
 npm run dev
 ```
