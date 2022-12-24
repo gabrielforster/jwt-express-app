@@ -1,12 +1,16 @@
 import express, { urlencoded, json, Response, NextFunction } from "express"
 import cookieParser from "cookie-parser"
 import path from "path"
+import mongoose from "mongoose"
+import { config } from "dotenv"
+config()
 
 import auth from "./routes/auth"
 import { validateCookieJWTAuth } from "./middleware/validateCookieJTWAtuh"
 import { RequestWithUser } from "./types/Request"
 
 const PORT = process.env.PORT || 3000
+const MONGO_URL = process.env.MONGO_URL;
 
 const app = express()
 
@@ -36,6 +40,8 @@ app.get(
 
 app.use("/auth", auth)
 
-app.listen(PORT, () => {
-  console.log("Server started on port 3000")
-})
+mongoose.connect(MONGO_URL as string).then(() => {
+  app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`);
+  });
+});
