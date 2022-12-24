@@ -7,6 +7,17 @@
   <title>Register Page</title>
 </head>
 <body>
-  <h2>Register</h2>
+  <main>
+    <h2>REGISTER</h2>
+    <form action="/auth/register" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+      <button type="submit">Register</button>
+    </form>
+  </main>
 </body>
 </html>
